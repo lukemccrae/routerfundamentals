@@ -8,20 +8,20 @@
 </head>
 
 <body>
+
     <ui-view></ui-view>
 
+    <!-- <script src="/node_modules/angular/angular.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.0-beta.3/angular-ui-router.js"></script>
 
-    <house-list></house-list>
 
-    <script src="/node_modules/angular/angular.min.js"></script>
     <script src="/js/app.module.js"></script>
-    <script src="/js/app.config.js"></script>
+    <script src="/js/houses/house.service.js"></script>
     <script src="/js/houses/house-list.component.js"></script>
     <script src="/js/houses/house-new.component.js"></script>
     <script src="/js/houses/house-show.component.js"></script>
-    <script src="/js/houses/house.service.js"></script>
-    <script src="https://unpkg.com/angular-ui-router@1.0.0-beta.3/release/angular-ui-router.js"></script>
-
+    <script src="/js/app.config.js"></script>
 </body>
 
 </html>

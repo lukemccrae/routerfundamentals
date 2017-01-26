@@ -1,21 +1,23 @@
 (function() {
-  'use strict'
+    'use strict'
 
-  angular.module('app')
-    .component('houseNew', {
-      controller: function ($state, houseService) {
-        const vm = this
+    angular.module('app')
+        .component('houseNew', {
+            controller: function($state, houseService) {
+                const vm = this
 
-        vm.$onInit = function () {
-          vm.houses = houseService.houses
-        }
+                vm.$onInit = function() {
+                    vm.houses = houseService.houses
+                }
 
-        vm.addHouse = function () {
-          houseService.addHouse(vm.house)
-          // TODO: go to the appropriate URL here
-        }
-      },
-      template: `
+                vm.addHouse = function() {
+                    houseService.addHouse(vm.house)
+                    $state.go('house-show', {
+                        "id": vm.house.id
+                    })
+                }
+            },
+            template: `
         <h1>New House</h1>
 
         <form ng-submit="$ctrl.addHouse()">
@@ -28,8 +30,9 @@
           <p>
             <button type="submit">Create House</button>
           </p>
+          <a ui-sref="house-show({id:house.id})">{{house.name}}</a>
         </form>
       `
-    })
+        })
 
 }());

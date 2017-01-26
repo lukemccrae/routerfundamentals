@@ -1,26 +1,31 @@
 (function() {
-  'use strict'
+    'use strict'
 
-  angular.module('app')
-    .component('houseList', {
-      controller: function (houseService) {
-        const vm = this
+    angular.module('app')
+        .component('houseList', {
+            controller: function($state, houseService) {
 
-        vm.$onInit = function () {
-          vm.houses = houseService.houses
-        }
-      },
-      template: `
+                const vm = this
+                vm.$onInit = function() {
+                    vm.houses = houseService.houses
+                }
+                vm.setHouse = function(house) {
+                    $state.go('house-show', {
+                        "id": house.id
+                    })
+                }
+            },
+            template: `
         <h1>Houses</h1>
-
         <ul>
-          <li ng-repeat="house in $ctrl.houses">
-            <!-- TODO: add link here -->
+          <li ng-repeat="house in $ctrl.houses" ng-click="$ctrl.setHouse(house)">
+          {{house.address}}
+          {{house.name}}
           </li>
         </ul>
 
-        <!-- TODO: add link here -->
+<a ui-sref="house-new">Add Houses</a>
       `
-    })
+        })
 
-}());
+}());;
